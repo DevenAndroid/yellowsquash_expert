@@ -7,8 +7,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
-import '../../widgets/apptheme.dart';
-import '../resource/app_Assets.dart';
+import '../../../widgets/apptheme.dart';
+import '../../resource/app_Assets.dart';
 
 class ProgrammeDetailsScreen extends StatefulWidget {
   const ProgrammeDetailsScreen({super.key});

@@ -4,32 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:yellowsquash_expert/screens/webinarDetailsScreen.dart';
+import 'package:yellowsquash_expert/screens/program_screen/ProgrammeDetailsScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarDetailsScreen.dart';
 
-import '../widgets/apptheme.dart';
+import '../../widgets/apptheme.dart';
 
-class WebinarsScreen extends StatefulWidget {
-  const WebinarsScreen({super.key});
+class ProgrammeScreen extends StatefulWidget {
+  const ProgrammeScreen({super.key});
 
   @override
-  State<WebinarsScreen> createState() => _WebinarsScreenState();
+  State<ProgrammeScreen> createState() => _ProgrammeScreenState();
 }
 
-class _WebinarsScreenState extends State<WebinarsScreen> {
+class _ProgrammeScreenState extends State<ProgrammeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF9D121),
         title: Text(
-          'Webinars',
+          'Programme',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
-      ),
+    iconTheme: const IconThemeData(color: AppTheme.blackcolor),),
       body: Padding(
         padding: const EdgeInsets.only(left: 15,right: 15),
         child: ListView.builder(
@@ -55,7 +52,7 @@ class _WebinarsScreenState extends State<WebinarsScreen> {
                   const SizedBox(height: 5,),
                   GestureDetector(
                     onTap: (){
-                      Get.to(const WebinarDetailsScreen());
+                      Get.to(const ProgrammeDetailsScreen());
                     },
                     child: SizedBox(
                         height: 160,
@@ -127,7 +124,7 @@ class _WebinarsScreenState extends State<WebinarsScreen> {
                                   children: [
                                     const SizedBox(height: 10,),
                                     Text(
-                                      "Kumbhak Therapy for Thyroid Reversal",
+                                      "Functional Medicine Program for Autism & Developmental Disorders",
                                       style: GoogleFonts.poppins(
                                           color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                     ),

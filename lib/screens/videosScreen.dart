@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
-import 'package:yellowsquash_expert/screens/webinarDetailsScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarDetailsScreen.dart';
 
 import '../widgets/apptheme.dart';
 

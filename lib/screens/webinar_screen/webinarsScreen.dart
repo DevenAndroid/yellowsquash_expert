@@ -4,32 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:yellowsquash_expert/screens/ProgrammeDetailsScreen.dart';
-import 'package:yellowsquash_expert/screens/webinarDetailsScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarDetailsScreen.dart';
 
-import '../widgets/apptheme.dart';
+import '../../widgets/apptheme.dart';
 
-class ProgrammeScreen extends StatefulWidget {
-  const ProgrammeScreen({super.key});
+class WebinarsScreen extends StatefulWidget {
+  const WebinarsScreen({super.key});
 
   @override
-  State<ProgrammeScreen> createState() => _ProgrammeScreenState();
+  State<WebinarsScreen> createState() => _WebinarsScreenState();
 }
 
-class _ProgrammeScreenState extends State<ProgrammeScreen> {
+class _WebinarsScreenState extends State<WebinarsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF9D121),
         title: Text(
-          'Programme',
+          'Webinars',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 15,right: 15),
@@ -56,7 +52,7 @@ class _ProgrammeScreenState extends State<ProgrammeScreen> {
                   const SizedBox(height: 5,),
                   GestureDetector(
                     onTap: (){
-                      Get.to(const ProgrammeDetailsScreen());
+                      Get.to(const WebinarDetailsScreen());
                     },
                     child: SizedBox(
                         height: 160,
@@ -128,7 +124,7 @@ class _ProgrammeScreenState extends State<ProgrammeScreen> {
                                   children: [
                                     const SizedBox(height: 10,),
                                     Text(
-                                      "Functional Medicine Program for Autism & Developmental Disorders",
+                                      "Kumbhak Therapy for Thyroid Reversal",
                                       style: GoogleFonts.poppins(
                                           color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                     ),

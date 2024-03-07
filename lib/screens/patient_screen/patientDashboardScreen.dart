@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/apptheme.dart';
-import '../widgets/common_text_field.dart';
+import '../../widgets/apptheme.dart';
+import '../../widgets/common_text_field.dart';
 
 class PatientDashboardScreen extends StatefulWidget {
   const PatientDashboardScreen({super.key});
@@ -23,10 +23,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
           'Patient Dashboard',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: SingleChildScrollView(
         child: Column(

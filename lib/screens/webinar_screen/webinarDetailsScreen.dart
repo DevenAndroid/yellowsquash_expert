@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
-import '../../widgets/apptheme.dart';
+import '../../../widgets/apptheme.dart';
 
 class WebinarDetailsScreen extends StatefulWidget {
   const WebinarDetailsScreen({super.key});

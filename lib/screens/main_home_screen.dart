@@ -4,7 +4,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/HomePage.dart';
+import 'package:yellowsquash_expert/screens/blog_screen/blogsScreen.dart';
+import 'package:yellowsquash_expert/screens/myAccountScreen.dart';
+import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScreen.dart';
+import 'package:yellowsquash_expert/screens/program_screen/programmerScreen.dart';
 import 'package:yellowsquash_expert/screens/queries_screen/queries_screen.dart';
+import 'package:yellowsquash_expert/screens/settingScreen.dart';
+import 'package:yellowsquash_expert/screens/teamScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarsScreen.dart';
 import '../controller/navbarcontroller.dart';
 import '../resource/app_Assets.dart';
 
@@ -20,9 +27,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   bool isCheck = true;
   final pages = [
     const HomePageScreen(),
+    const TeamScreen(),
     const HomePageScreen(),
-    const HomePageScreen(),
-    const HomePageScreen(),
+    const MyAccountScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -191,8 +198,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Programs".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.program)),
                                     onTap: () {
-                                      bottomController.changePage(1);
-                                      Get.back();
+                                      Get.to(()=>const ProgrammeScreen());
                                     }),
                                 // drawerTile(
                                 //     active: true,
@@ -205,7 +211,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Webinar".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.experts)),
                                     onTap: () {
-                                      // Get.toNamed(ExpertListScreen.expertListScreen);
+                                      Get.to(()=>const WebinarsScreen());
                                     }),
                                 const Divider(),
                                 drawerTile(
@@ -213,7 +219,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Blog".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.healthpedia)),
                                     onTap: () {
-                                      // Get.toNamed(BlogListScreen.blogsListScreen);
+                                      Get.to(()=>const BlogsScreen());
                                     }),
                               ],
                             ),
@@ -229,7 +235,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   active: true,
                                   title: "Team".tr,
                                   onTap: () {
-                                    // Get.toNamed(MyProgrammerScreen.myProgrammerScreen);
+                                  bottomController.changePage(1);
+                                  Get.back();
                                   }),
                               Divider(
                                 thickness: 1,
@@ -244,7 +251,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   active: true,
                                   title: "Patient Dashboard".tr,
                                   onTap: () {
-                                    // Get.to(() => const SettingScreen());
+                                    Get.to(() => const PatientDashboardScreen());
                                   }),
                               Divider(
                                 thickness: 1,
@@ -264,7 +271,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   active: true,
                                   title: "Settings".tr,
                                   onTap: () {
-                                    // Get.to(() => const SettingScreen());
+                                    Get.to(() => const SettingScreen());
                                   }),
                               Divider(
                                 thickness: 1,

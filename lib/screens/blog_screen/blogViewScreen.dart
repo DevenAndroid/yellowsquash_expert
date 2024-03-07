@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../widgets/common_text_field.dart';
-import '../resource/app_Assets.dart';
-import '../widgets/apptheme.dart';
-import '../widgets/back_app_bar.dart';
+import '../../../widgets/common_text_field.dart';
+import '../../resource/app_Assets.dart';
+import '../../widgets/apptheme.dart';
+import '../../widgets/back_app_bar.dart';
 
 class BlogDetailsScreen extends StatefulWidget {
   const BlogDetailsScreen({super.key});
@@ -31,11 +31,6 @@ class _BlogDetailsScreenState extends State<BlogDetailsScreen> {
               children: [
                 blogDetails(size),
                 const SizedBox(height: 15),
-                SearchTextFieldWidget(
-                  hint: "Search",
-                  suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_forward_rounded)),
-                ),
-                const SizedBox(height: 10),
               ],
             ),
           ),

@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:yellowsquash_expert/screens/webinarDetailsScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarDetailsScreen.dart';
 
-import '../widgets/apptheme.dart';
+import '../../widgets/apptheme.dart';
+import 'blogViewScreen.dart';
 
 class BlogsScreen extends StatefulWidget {
   const BlogsScreen({super.key});
@@ -25,10 +26,7 @@ class _BlogsScreenState extends State<BlogsScreen> {
           'Blogs',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),
@@ -61,7 +59,7 @@ class _BlogsScreenState extends State<BlogsScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(const WebinarDetailsScreen());
+                      Get.to(const BlogDetailsScreen());
                     },
                     child: SizedBox(
                         height: 130,

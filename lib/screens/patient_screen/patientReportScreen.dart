@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/apptheme.dart';
+import '../../widgets/apptheme.dart';
 
 class PatientReportScreen extends StatefulWidget {
   const PatientReportScreen({super.key});
