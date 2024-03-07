@@ -1,13 +1,11 @@
 import 'package:get/get.dart';
+import 'package:yellowsquash_expert/screens/login_screen.dart';
+import '../screens/queries_screen/queries_screen.dart';
+import '../splash_screen.dart';
 
-
-import '../screens/blogViewScreen.dart';
-import '../screens/filterScreen.dart';
-
-
-
-class MyRouter{
+class MyRouter {
   static var route = [
-  GetPage(name: '/', page: () => const FilterScreen()),
+    GetPage(name: '/', page: () => const LoginScreen()),
+    GetPage(name: RaiseQueryList.raiseQueryList, page: () => const RaiseQueryList()),
   ];
 }

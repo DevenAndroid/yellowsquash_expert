@@ -17,17 +17,6 @@ class _TeamScreenState extends State<TeamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffF9D121),
-        title: Text(
-          'Team',
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
-        ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 10,right: 10),

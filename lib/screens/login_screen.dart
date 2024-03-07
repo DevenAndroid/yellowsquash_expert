@@ -2,9 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/screens/main_home_screen.dart';
 import 'package:yellowsquash_expert/screens/resetPasswordEmail.dart';
 import 'package:yellowsquash_expert/screens/resetPasswordOtpScreen.dart';
-import 'package:yellowsquash_expert/screens/webinarsScreen.dart';
+import 'package:yellowsquash_expert/screens/webinar_screen/webinarsScreen.dart';
 import '../widgets/apptheme.dart';
 import '../widgets/common_text_field.dart';
 import 'SignupScreen.dart';
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
               CommonButtonBlue(
                 title: 'Login',
                 onPressed: () {
-                   Get.offAll(() => const WebinarsScreen());
+                   Get.offAll(() => const MainHomeScreen());
                 },
               ),
               SizedBox(

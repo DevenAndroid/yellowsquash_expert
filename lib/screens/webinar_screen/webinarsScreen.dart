@@ -1,81 +1,34 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:video_player/video_player.dart';
 import 'package:yellowsquash_expert/screens/webinar_screen/webinarDetailsScreen.dart';
 
-import '../widgets/apptheme.dart';
+import '../../widgets/apptheme.dart';
 
-class VideosScreen extends StatefulWidget {
-  const VideosScreen({super.key});
+class WebinarsScreen extends StatefulWidget {
+  const WebinarsScreen({super.key});
 
   @override
-  State<VideosScreen> createState() => _VideosScreenState();
+  State<WebinarsScreen> createState() => _WebinarsScreenState();
 }
 
-class _VideosScreenState extends State<VideosScreen> {
-  late VideoPlayerController videoPlayerController;
-  ChewieController? chewieController;
-
-  @override
-  void initState() {
-    super.initState();
-    _initPlayer();
-  }
-
-  void _initPlayer() async {
-    videoPlayerController =
-        VideoPlayerController.network('https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
-    await videoPlayerController.initialize();
-
-    chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      autoPlay: true,
-      looping: true,
-      additionalOptions: (context) {
-        return <OptionItem>[
-          OptionItem(
-            onTap: () => debugPrint('Option 1 pressed!'),
-            iconData: Icons.chat,
-            title: 'Option 1',
-          ),
-          OptionItem(
-            onTap: () => debugPrint('Option 2 pressed!'),
-            iconData: Icons.share,
-            title: 'Option 2',
-          ),
-        ];
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    videoPlayerController.dispose();
-    chewieController?.dispose();
-    super.dispose();
-  }
-
+class _WebinarsScreenState extends State<WebinarsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF9D121),
         title: Text(
-          'Videos',
+          'Webinars',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
+        padding: const EdgeInsets.only(left: 15,right: 15),
         child: ListView.builder(
             itemCount: 4,
             shrinkWrap: true,
@@ -83,9 +36,7 @@ class _VideosScreenState extends State<VideosScreen> {
             itemBuilder: (context, index) {
               return Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -94,46 +45,19 @@ class _VideosScreenState extends State<VideosScreen> {
                         style: GoogleFonts.poppins(
                             fontSize: 12, fontWeight: FontWeight.w400, color: const Color(0xff444444)),
                       ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.edit,
-                        color: AppTheme.grayColor,
-                      ),
-                      const Icon(
-                        Icons.delete_outline,
-                        color: Color(0xff22C55E),
-                      ),
+
+                      Image.asset('assets/images/editicon.png',height: 25,)
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
+                  const SizedBox(height: 5,),
                   GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          // Return the dialog box widget
-                          return AlertDialog(
-                            title:  Container(
-                              width: Get.width,
-                              height: 200,
-                              decoration: const BoxDecoration(color: Colors.grey),
-                              child: chewieController != null
-                                  ? Chewie(
-                                controller: chewieController!,
-                              )
-                                  : const Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                            ),
-                          );
-                        },
-                      );
+                    onTap: (){
+                      Get.to(const WebinarDetailsScreen());
                     },
                     child: SizedBox(
-                        height: 130,
+                        height: 160,
                         child: Container(
+
                           height: 300,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -160,7 +84,7 @@ class _VideosScreenState extends State<VideosScreen> {
                                             topLeft: Radius.circular(6), bottomLeft: Radius.circular(6)),
                                         child: CachedNetworkImage(
                                           imageUrl:
-                                              "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                                          "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
                                           fit: BoxFit.cover,
                                           errorWidget: (_, __, ___) => const SizedBox(),
                                           placeholder: (_, __) => Image.asset(
@@ -198,19 +122,9 @@ class _VideosScreenState extends State<VideosScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
+                                    const SizedBox(height: 10,),
                                     Text(
-                                      "Nutrition",
-                                      style: GoogleFonts.poppins(
-                                          color: const Color(0xff595959), fontWeight: FontWeight.w400, fontSize: 12),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "Weight Loss with Ketogenic Diet",
+                                      "Kumbhak Therapy for Thyroid Reversal",
                                       style: GoogleFonts.poppins(
                                           color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                     ),
@@ -218,11 +132,11 @@ class _VideosScreenState extends State<VideosScreen> {
                                     Text(
                                       "DRAFT",
                                       style: GoogleFonts.poppins(
-                                          color: const Color(0xff444444), fontWeight: FontWeight.w400, fontSize: 12),
+                                          color: const Color(0xff444444), fontWeight: FontWeight.w500, fontSize: 12),
                                     ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
+                                    const SizedBox(height: 10,),
+
+
                                   ],
                                 ),
                               ),
@@ -231,9 +145,7 @@ class _VideosScreenState extends State<VideosScreen> {
                           ),
                         )),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10,),
                 ],
               );
             }),
