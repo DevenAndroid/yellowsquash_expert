@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
-import 'package:yellowsquash_expert/splashScreen.dart';
+
+
+import '../screens/blogViewScreen.dart';
+import '../screens/filterScreen.dart';
+
 
 
 class MyRouter{
   static var route = [
-  GetPage(name: '/', page: () => const SplashScreen()),
+  GetPage(name: '/', page: () => const FilterScreen()),
   ];
 }
