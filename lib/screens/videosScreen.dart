@@ -51,6 +51,9 @@ class _VideosScreenState extends State<VideosScreen> {
         ];
       },
     );
+    setState(() {
+
+    });
   }
 
   @override

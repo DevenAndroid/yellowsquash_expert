@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/screens/patient_screen/patientReportScreen.dart';
 
 import '../../widgets/apptheme.dart';
 import '../../widgets/common_text_field.dart';
@@ -92,37 +94,42 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                 itemBuilder: (context,index){
               return Padding(
                 padding: const EdgeInsets.only(left: 15,right: 15,bottom: 10),
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      maxRadius: 30,
-                      minRadius: 30,
-                      backgroundImage: NetworkImage(
-                        "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                child: GestureDetector(
+                  onTap: (){
+                    Get.to(const PatientReportScreen());
+                  },
+                  child: Row(
+                    children: [
+                      const CircleAvatar(
+                        maxRadius: 30,
+                        minRadius: 30,
+                        backgroundImage: NetworkImage(
+                          "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 10,),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Manvinder Kaur',
-                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                        ),
-                        Text(
-                          'Diabetes & Metabolic Reset Program',
-                          style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
-                        ),
-                        Text(
-                          'Batch 2',
-                          style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    const Icon(Icons.more_horiz,color: Colors.grey,)
-                  ],
+                      const SizedBox(width: 10,),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Manvinder Kaur',
+                            style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                          ),
+                          Text(
+                            'Diabetes & Metabolic Reset Program',
+                            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                          ),
+                          Text(
+                            'Batch 2',
+                            style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      const Icon(Icons.more_horiz,color: Colors.grey,)
+                    ],
+                  ),
                 ),
               );
             })
