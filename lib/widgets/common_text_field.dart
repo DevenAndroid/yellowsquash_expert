@@ -97,14 +97,14 @@ class RegisterTextFieldWidget extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           // .copyWith(top: maxLines! > 4 ? AddSize.size18 : 0),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xFF22C55E).withOpacity(.24)),
+            borderSide: const BorderSide(color: AppTheme.greenColor),
             borderRadius: BorderRadius.circular(6.0),
           ),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: const Color(0xFF22C55E).withOpacity(.24)),
-              borderRadius: const BorderRadius.all(Radius.circular(6.0))),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: AppTheme.greenColor),
+              borderRadius: BorderRadius.all(Radius.circular(6.0))),
           border: OutlineInputBorder(
-              borderSide: BorderSide(color: const Color(0xFF22C55E).withOpacity(.24), width: 3.0),
+              borderSide: const BorderSide(color: AppTheme.greenColor, width: 3.0),
               borderRadius: BorderRadius.circular(6.0)),
           suffixIcon: suffixIcon,
           suffix: suffix,
