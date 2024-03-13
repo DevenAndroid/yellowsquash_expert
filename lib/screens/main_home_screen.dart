@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/HomePage.dart';
+import 'package:yellowsquash_expert/screens/HomePageScreen.dart';
 import 'package:yellowsquash_expert/screens/blog_screen/blogsScreen.dart';
 import 'package:yellowsquash_expert/screens/myAccountScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScreen.dart';
@@ -27,9 +28,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   final bottomController = Get.put(BottomNavController());
   bool isCheck = true;
   final pages = [
-    const HomePageScreen(),
+    const HomepageScreen(),
     const TeamScreen(),
-    const HomePageScreen(),
+    const HomepageScreen(),
     const MyAccountScreen(),
   ];
   @override

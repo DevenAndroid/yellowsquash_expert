@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/screens/teamFormScreen.dart';
 
 import '../widgets/apptheme.dart';
 import '../widgets/common_text_field.dart';
@@ -19,101 +22,113 @@ class _TeamScreenState extends State<TeamScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 10,right: 10),
+          padding: const EdgeInsets.only(left: 10, right: 10),
           child: Column(
             children: [
-              const SizedBox(height: 10,),
-              Row(
-                children: [
-                  const CircleAvatar(
-                    minRadius: 20,
-                    maxRadius: 20,
-                    backgroundColor: Color(0xffE2E2E2),
-                      child: Text('+',style: TextStyle(fontSize: 20,color: Colors.black),),
-                  ),
-                  const SizedBox(width: 10,),
-                  Text(
-                    'Add Team Member',
-                    style: GoogleFonts.poppins(fontSize: 14, color: AppTheme.blackcolor, fontWeight: FontWeight.w400),
-                  ),
-                ],
+              const SizedBox(
+                height: 10,
               ),
-              const SizedBox(height: 10,),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'TEAM MEMBER 1',
-                    style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Name',
-                    style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                  ),
-                  const SizedBox(height: 5,),
-                  const RegisterTextFieldWidget(
-                    hint: 'Full name',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Role',
-                    style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                  ),
-                  const SizedBox(height: 5,),
-                  const RegisterTextFieldWidget(
-                    hint: 'Email address',
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Phone number',
-                    style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                  ),
-                  const SizedBox(height: 5,),
-                  const RegisterTextFieldWidget(
-                    hint: 'Phone number',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: Container(
-                      width: Get.width,
-                      padding: const EdgeInsets.only(top: 12, bottom: 12),
-                      decoration: BoxDecoration(color: const Color(0xffFA0101), borderRadius: BorderRadius.circular(5)),
-                      child: Center(
-                        child: Text(
-                          'Delete',
-                          style: GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
-                        ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(const TeamFormScreen());
+                },
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      minRadius: 20,
+                      maxRadius: 20,
+                      backgroundColor: Color(0xffE2E2E2),
+                      child: Text(
+                        '+',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20,),
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        minRadius: 20,
-                        maxRadius: 20,
-                        backgroundColor: Color(0xffE2E2E2),
-                        child: Text('+',style: TextStyle(fontSize: 20,color: Colors.black),),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Add Team Member',
+                      style: GoogleFonts.poppins(fontSize: 14, color: AppTheme.blackcolor, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              GridView.builder(
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisExtent: 250, crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 10),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 600,
+                      width: Get.width,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: const Color(0xff22C55E)),
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const CircleAvatar(
+                            maxRadius: 40,
+                            minRadius: 40,
+                            backgroundImage: NetworkImage(
+                              "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Mrs Pooja",
+                            style: GoogleFonts.poppins(
+                                color: AppTheme.blackcolor, fontWeight: FontWeight.w600, fontSize: 16),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Dietition",
+                            style: GoogleFonts.poppins(
+                                color: AppTheme.blackcolor, fontWeight: FontWeight.w400, fontSize: 14),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "+91 7896547865",
+                            style: GoogleFonts.poppins(
+                                color: AppTheme.blackcolor, fontWeight: FontWeight.w400, fontSize: 12),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/editicon.png',
+                                height: 35,
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Image.asset('assets/images/deleteicon.png', height: 35),
+                            ],
+                          )
+                        ],
                       ),
-                      const SizedBox(width: 10,),
-                      Text(
-                        'Add Team Member',
-                        style: GoogleFonts.poppins(fontSize: 14, color: AppTheme.blackcolor, fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                ],
-              )
+                    );
+                  })
             ],
           ),
         ),
