@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/HomePage.dart';
+import 'package:yellowsquash_expert/screens/HomePageScreen.dart';
 import 'package:yellowsquash_expert/screens/blog_screen/blogsScreen.dart';
 import 'package:yellowsquash_expert/screens/myAccountScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScreen.dart';
@@ -11,6 +12,7 @@ import 'package:yellowsquash_expert/screens/program_screen/programmerScreen.dart
 import 'package:yellowsquash_expert/screens/queries_screen/queries_screen.dart';
 import 'package:yellowsquash_expert/screens/settingScreen.dart';
 import 'package:yellowsquash_expert/screens/teamScreen.dart';
+import 'package:yellowsquash_expert/screens/videosScreen.dart';
 import 'package:yellowsquash_expert/screens/webinar_screen/webinarsScreen.dart';
 import '../controller/navbarcontroller.dart';
 import '../resource/app_Assets.dart';
@@ -26,9 +28,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   final bottomController = Get.put(BottomNavController());
   bool isCheck = true;
   final pages = [
-    const HomePageScreen(),
+    const HomepageScreen(),
     const TeamScreen(),
-    const HomePageScreen(),
+    const HomepageScreen(),
     const MyAccountScreen(),
   ];
   @override
@@ -264,6 +266,16 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     Get.to(() => const RaiseQueryList());
                                   }),
                               Divider(
+                                thickness: 1,
+                                color: Colors.grey.shade300,
+                              ),
+                              drawerTile1(
+                                  active: true,
+                                  title: "Videos".tr,
+                                  onTap: () {
+                                    Get.to(() => const VideosScreen());
+                                  }),
+                              Divider(
                                 thickness: 8,
                                 color: Colors.grey.shade300,
                               ),
@@ -368,7 +380,6 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                   child: Theme(
                       data: ThemeData(
                           splashColor: Colors.transparent,
-                          backgroundColor: Colors.transparent,
                           bottomNavigationBarTheme:
                               const BottomNavigationBarThemeData(backgroundColor: Colors.white, elevation: 0)),
                       child: BottomNavigationBar(

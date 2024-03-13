@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/screens/patient_screen/patientReportDetailsScreen.dart';
 
 import '../../widgets/apptheme.dart';
 
@@ -22,10 +24,7 @@ class _PatientReportScreenState extends State<PatientReportScreen> {
           'Reports',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: ListView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
@@ -34,32 +33,37 @@ class _PatientReportScreenState extends State<PatientReportScreen> {
           itemBuilder: (context,index){
           return Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Blood Sugar Report',
-                            style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: AppTheme.blackcolor),
-                          ),
-                          const SizedBox(height: 10,),
-                          Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac magna praesent...',
-                            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
-                          ),
-                        ],
+            child: GestureDetector(
+              onTap: (){
+                Get.to(const PatientReportDetailsScreen());
+              },
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Blood Sugar Report',
+                              style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: AppTheme.blackcolor),
+                            ),
+                            const SizedBox(height: 10,),
+                            Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit ac magna praesent...',
+                              style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const Icon(Icons.image_outlined,size: 100,color: Colors.grey,)
-                  ],
-                ),
-                Divider(height: 1,color: Colors.grey.shade400,thickness: 1,)
-              ],
+                      const Icon(Icons.image_outlined,size: 100,color: Colors.grey,)
+                    ],
+                  ),
+                  Divider(height: 1,color: Colors.grey.shade400,thickness: 1,)
+                ],
+              ),
             ),
           );
 
