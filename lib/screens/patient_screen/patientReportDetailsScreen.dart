@@ -42,10 +42,7 @@ class _PatientReportDetailsScreenState extends State<PatientReportDetailsScreen>
           'Reports',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: SingleChildScrollView(
         child: Padding(
