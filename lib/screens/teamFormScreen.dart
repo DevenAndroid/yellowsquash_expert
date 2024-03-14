@@ -17,17 +17,17 @@ class _TeamFormScreenState extends State<TeamFormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add TEAM MEMBER'),
-        leading: GestureDetector(
-          onTap: (){
-            Get.back();
-          },
-            child: Icon(Icons.arrow_back)),
+      appBar:AppBar(
+        backgroundColor: const Color(0xffF9D121),
+        title: Text(
+          'Add team member',
+          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
+        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -38,7 +38,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Stack(
               children: [

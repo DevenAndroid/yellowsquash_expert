@@ -72,10 +72,7 @@ class _VideosScreenState extends State<VideosScreen> {
           'Videos',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-        ),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 15, right: 15),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/screens/login_screen.dart';
 
 import '../../widgets/apptheme.dart';
 import '../../widgets/common_text_field.dart';
@@ -84,6 +85,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               CommonButtonBlue(
                 title: 'Reset Password',
                 onPressed: (){
+                  Get.to(()=>const LoginScreen());
                 },
               ),
 

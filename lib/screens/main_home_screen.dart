@@ -6,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/HomePage.dart';
 import 'package:yellowsquash_expert/screens/HomePageScreen.dart';
 import 'package:yellowsquash_expert/screens/blog_screen/blogsScreen.dart';
+import 'package:yellowsquash_expert/screens/login_screen.dart';
 import 'package:yellowsquash_expert/screens/myAccountScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScreen.dart';
 import 'package:yellowsquash_expert/screens/program_screen/programmerScreen.dart';
 import 'package:yellowsquash_expert/screens/queries_screen/queries_screen.dart';
 import 'package:yellowsquash_expert/screens/settingScreen.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/privacy__policy_screen.dart';
 import 'package:yellowsquash_expert/screens/teamScreen.dart';
 import 'package:yellowsquash_expert/screens/videosScreen.dart';
 import 'package:yellowsquash_expert/screens/webinar_screen/webinarsScreen.dart';
@@ -143,10 +145,15 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   ),
                                   Row(
                                     children: [
-                                      Text("Logout",
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.poppins(
-                                              fontSize: 18, color: Colors.black, fontWeight: FontWeight.w400)),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.offAll(()=>const LoginScreen());
+                                        },
+                                        child: Text("Logout",
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 18, color: Colors.black, fontWeight: FontWeight.w400)),
+                                      ),
                                       SizedBox(
                                         width: size.width * .01,
                                       ),
@@ -200,7 +207,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Programs".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.program)),
                                     onTap: () {
-                                      Get.to(()=>const ProgrammeScreen());
+                                      Get.to(() => const ProgrammeScreen());
                                     }),
                                 // drawerTile(
                                 //     active: true,
@@ -213,7 +220,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Webinar".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.experts)),
                                     onTap: () {
-                                      Get.to(()=>const WebinarsScreen());
+                                      Get.to(() => const WebinarsScreen());
                                     }),
                                 const Divider(),
                                 drawerTile(
@@ -221,7 +228,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                     title: "Blog".tr,
                                     icon: const ImageIcon(AssetImage(AppAssets.healthpedia)),
                                     onTap: () {
-                                      Get.to(()=>const BlogsScreen());
+                                      Get.to(() => const BlogsScreen());
                                     }),
                               ],
                             ),
@@ -237,8 +244,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   active: true,
                                   title: "Team".tr,
                                   onTap: () {
-                                  bottomController.changePage(1);
-                                  Get.back();
+                                    bottomController.changePage(1);
+                                    Get.back();
                                   }),
                               Divider(
                                 thickness: 1,
@@ -289,7 +296,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                 thickness: 1,
                                 color: Colors.grey.shade300,
                               ),
-                              drawerTile1(active: true, title: "Privacy Policy".tr, onTap: () {}),
+                              drawerTile1(active: true, title: "Privacy Policy".tr, onTap: () {
+                                Get.to(const PrivacyPolicyScreen());
+                              }),
                               Divider(
                                 thickness: 1,
                                 color: Colors.grey.shade300,
@@ -298,7 +307,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                   active: true,
                                   title: "Legal".tr,
                                   onTap: () {
-                                    // Get.toNamed(RaiseQueryList.raiseQueryList);
+
                                   }),
                             ],
                           )
@@ -385,43 +394,31 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                       child: BottomNavigationBar(
                           unselectedLabelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                           selectedLabelStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.black),
-                          items: [
+                          items: const [
                             BottomNavigationBarItem(
-                              icon: GestureDetector(
-                                onTap: () {},
-                                child: const Icon(
-                                  Icons.home_outlined,
-                                  size: 25,
-                                ),
+                              icon: Icon(
+                                Icons.home_outlined,
+                                size: 25,
                               ),
                               label: 'Home',
                             ),
                             BottomNavigationBarItem(
-                              icon: GestureDetector(
-                                onTap: () {},
-                                child: const ImageIcon(
-                                  AssetImage(AppAssets.groups),
-                                  size: 20,
-                                ),
+                              icon: ImageIcon(
+                                AssetImage(AppAssets.groups),
+                                size: 20,
                               ),
                               label: 'My Team',
                             ),
                             BottomNavigationBarItem(
-                                icon: GestureDetector(
-                                  onTap: () async {},
-                                  child: const Icon(
-                                    Icons.chat_bubble_outline,
-                                    size: 20,
-                                  ),
+                                icon: Icon(
+                                  Icons.chat_bubble_outline,
+                                  size: 20,
                                 ),
                                 label: 'Chat'),
                             BottomNavigationBarItem(
-                                icon: GestureDetector(
-                                  onTap: () async {},
-                                  child: const Icon(
-                                    Icons.person_outline_outlined,
-                                    size: 25,
-                                  ),
+                                icon: Icon(
+                                  Icons.person_outline_outlined,
+                                  size: 25,
                                 ),
                                 label: 'Account'),
                           ],

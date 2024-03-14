@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/resetPasswordEmail.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/change_password_screen.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/deactivated_Account_screen.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/help_center_screen.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/notification_screen.dart';
 import '../widgets/apptheme.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -32,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(const ResetPasswordEmailScreen());
+                Get.to(const ChangePasswordScreen());
               },
               child: Padding(
                 padding: const EdgeInsets.only(left: 15, top: 15, bottom: 5),
@@ -48,9 +52,14 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15, bottom: 5),
-              child: Text(
-                'Deactivate Account',
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(const DeactivatedAccount());
+                },
+                child: Text(
+                  'Deactivate Account',
+                  style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+                ),
               ),
             ),
             Divider(
@@ -59,9 +68,14 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15, bottom: 5),
-              child: Text(
-                'Notification Preferences',
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(const NotificationScreen());
+                },
+                child: Text(
+                  'Notification Preferences',
+                  style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+                ),
               ),
             ),
             Divider(
@@ -70,9 +84,14 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15, top: 15, bottom: 5),
-              child: Text(
-                'Help Center',
-                style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(const HelpCenterScreen());
+                },
+                child: Text(
+                  'Help Center',
+                  style: GoogleFonts.roboto(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+                ),
               ),
             ),
             Divider(

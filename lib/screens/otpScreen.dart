@@ -5,6 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
+import 'package:yellowsquash_expert/screens/login_screen.dart';
 import '../widgets/apptheme.dart';
 import '../widgets/common_text_field.dart';
 
@@ -104,7 +105,7 @@ class _OtpScreenState extends State<OtpScreen> {
               CommonButtonBlue(
                 title: 'Verify',
                 onPressed: () {
-                  // Get.to(const MainHomeScreen());
+                  Get.to(const LoginScreen());
                 },
               ),
               const SizedBox(

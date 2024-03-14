@@ -26,23 +26,18 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: const Text(
+        backgroundColor: const Color(0xffF9D121),
+        title: Text(
           'Book Appointment',
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
         ),
-        leading: GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: Icon(Icons.arrow_back)),
+        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
