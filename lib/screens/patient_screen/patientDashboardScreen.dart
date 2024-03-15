@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/filterScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientDetailsScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientReportScreen.dart';
+import 'package:yellowsquash_expert/widgets/back_app_bar.dart';
 
 import '../../widgets/apptheme.dart';
 import '../../widgets/common_text_field.dart';
@@ -21,14 +22,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffF9D121),
-        title: Text(
-          'Patient Dashboard',
-          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
-        ),
-        iconTheme: const IconThemeData(color: AppTheme.blackcolor),
-      ),
+      appBar: backAppBar(title: "Patient Dashboard", context: context,backgroundColor: AppTheme.yellowColor),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -52,16 +46,14 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                             ),
                           ],
                           borderRadius: BorderRadius.circular(4)),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          hintText: 'Search Here',
+                      child: RegisterTextFieldWidget(
+                          hint: 'Search Here',
                           prefixIcon: IconButton(
                             icon: const Icon(
                               Icons.search,
                               color: AppTheme.grayColor,
                             ),
                             onPressed: () {},
-                          ),
                         ),
                       ),
                     ),
@@ -69,9 +61,9 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                   const SizedBox(
                     width: 10,
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: (){
-                      Get.to(const FilterScreen());
+                      Get.to(()=>const FilterScreen());
                     },
                     child: Container(
                       height: 40,
@@ -146,6 +138,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                           ),
                           const Spacer(),
                       PopupMenuButton<int>(
+                        surfaceTintColor: Colors.white,
                           icon: const Icon(
                             Icons.more_vert,
                             color: Colors.black,

@@ -49,14 +49,6 @@ class _RaiseQueryListState extends State<RaiseQueryList> {
               .headline6!
               .copyWith(fontWeight: FontWeight.w500, fontSize: 20, color: AppTheme.blackcolor),
         ),
-        actions: [
-          GestureDetector(
-              onTap: () {
-                // Get.toNamed(RaiseQuery.raiseQuery);
-              },
-              child: const Icon(Icons.add, size: 25)),
-          const SizedBox(width: 10),
-        ],
       ),
       body: Theme(
         data: ThemeData(useMaterial3: true),

@@ -12,12 +12,14 @@ import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScree
 import 'package:yellowsquash_expert/screens/program_screen/programmerScreen.dart';
 import 'package:yellowsquash_expert/screens/queries_screen/queries_screen.dart';
 import 'package:yellowsquash_expert/screens/settingScreen.dart';
+import 'package:yellowsquash_expert/screens/settings_screen/notification_screen.dart';
 import 'package:yellowsquash_expert/screens/settings_screen/privacy__policy_screen.dart';
 import 'package:yellowsquash_expert/screens/teamScreen.dart';
 import 'package:yellowsquash_expert/screens/videosScreen.dart';
 import 'package:yellowsquash_expert/screens/webinar_screen/webinarsScreen.dart';
 import '../controller/navbarcontroller.dart';
 import '../resource/app_Assets.dart';
+import 'chat_screen/chat_screen.dart';
 
 class MainHomeScreen extends StatefulWidget {
   const MainHomeScreen({super.key});
@@ -32,7 +34,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   final pages = [
     const HomepageScreen(),
     const TeamScreen(),
-    const HomepageScreen(),
+    const ChatScreen(),
     const MyAccountScreen(),
   ];
   @override
@@ -356,9 +358,14 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 ),
                 Stack(
                   children: [
-                    const Icon(
-                      Icons.notifications_none,
-                      color: Colors.black,
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(()=>const NotificationScreen());
+                      },
+                      child: const Icon(
+                        Icons.notifications_none,
+                        color: Colors.black,
+                      ),
                     ),
                     Positioned(
                         right: 2,

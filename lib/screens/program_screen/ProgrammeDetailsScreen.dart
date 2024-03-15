@@ -82,364 +82,367 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                   'Start Session 2',
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
                 ),
-                SizedBox(width: 10,),
-                Icon(Icons.videocam_outlined,color: Colors.white,)
+                const SizedBox(width: 10,),
+                const Icon(Icons.videocam_outlined,color: Colors.white,)
               ],
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: Get.width,
-                  height: 200,
-                  decoration: const BoxDecoration(color: Colors.grey),
-                  child: chewieController != null
-                      ? Chewie(
-                          controller: chewieController!,
-                        )
-                      : const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                ),
-                Positioned(
-                    top: 30,
-                    left: 20,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                    )),
-                const Positioned(
-                    top: 30,
-                    right: 20,
-                    child: Icon(
-                      Icons.share,
-                      color: Colors.white,
-                    )),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Theme(
+        data: ThemeData(
+          useMaterial3: true
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
                 children: [
-                  const SizedBox(
-                    height: 10,
+                  Container(
+                    width: Get.width,
+                    height: 200,
+                    decoration: const BoxDecoration(color: Colors.grey),
+                    child: chewieController != null
+                        ? Chewie(
+                            controller: chewieController!,
+                          )
+                        : const Center(
+                            child: CircularProgressIndicator(),
+                          ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  Positioned(
+                      top: 30,
+                      left: 20,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                      )),
+                  const Positioned(
+                      top: 30,
+                      right: 20,
+                      child: Icon(
+                        Icons.share,
+                        color: Colors.white,
+                      )),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Program starts on",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppTheme.grayColor,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "12 Aug 2021(Thu)",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppTheme.blackcolor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
                           children: [
-                            Text(
-                              "Program starts on",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                                color: AppTheme.grayColor,
+                            RatingBarIndicator(
+                              rating: 4,
+                              itemCount: 5,
+                              itemSize: 12.0,
+                              unratedColor: Colors.grey,
+                              physics: const BouncingScrollPhysics(),
+                              itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+                              itemBuilder: (context, _) => Image.asset(
+                                AppAssets.rating,
+                                color: AppTheme.topstar,
                               ),
                             ),
                             const SizedBox(
                               height: 5,
                             ),
-                            Text(
-                              "12 Aug 2021(Thu)",
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
+                            const Text(
+                              " 4.9 Reviews",
+                              style: TextStyle(
+                                fontSize: 14,
                                 fontWeight: FontWeight.w400,
-                                color: AppTheme.blackcolor,
+                                color: Color(0xff595959),
                               ),
                             ),
                           ],
                         ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Diabetes Reversal with Kumbhak Therapy",
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.blackcolor,
                       ),
-                      Column(
-                        children: [
-                          RatingBarIndicator(
-                            rating: 4,
-                            itemCount: 5,
-                            itemSize: 12.0,
-                            unratedColor: Colors.grey,
-                            physics: const BouncingScrollPhysics(),
-                            itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-                            itemBuilder: (context, _) => Image.asset(
-                              AppAssets.rating,
-                              color: AppTheme.topstar,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            " 4.9 Reviews",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff595959),
-                            ),
-                          ),
-                        ],
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "By Swami Rajvibhu",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xff22C55E),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Diabetes Reversal with Kumbhak Therapy",
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppTheme.blackcolor,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "By Swami Rajvibhu",
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xff22C55E),
+                    const SizedBox(
+                      height: 5,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Duration 12 Weeks",
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: AppTheme.blackcolor,
+                    Text(
+                      "Duration 12 Weeks",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: AppTheme.blackcolor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      const Stack(
-                        children: [
-                          CircleAvatar(
-                            maxRadius: 20,
-                            minRadius: 20,
-                            backgroundColor: Color(0xffF9D121),
-                            child: Text(
-                              'T',
-                              style: TextStyle(color: Colors.black, fontSize: 15),
-                            ),
-                          ),
-                          Positioned(
-                            left: 25,
-                            top: 0,
-                            bottom: 0,
-                            child: CircleAvatar(
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: [
+                        const Stack(
+                          children: [
+                            CircleAvatar(
                               maxRadius: 20,
                               minRadius: 20,
-                              backgroundColor: Color(0xffADADAD),
+                              backgroundColor: Color(0xffF9D121),
                               child: Text(
-                                'p',
+                                'T',
                                 style: TextStyle(color: Colors.black, fontSize: 15),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            left: 60,
-                            top: 0,
-                            bottom: 0,
-                            child: CircleAvatar(
-                              maxRadius: 20,
-                              minRadius: 20,
-                              backgroundColor: Color(0xff525252),
-                              child: Text(
-                                'k',
-                                style: TextStyle(color: Colors.black, fontSize: 15),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "+ 350 Enrolled",
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppTheme.blackcolor,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(6),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black26,
-                              offset: Offset(
-                                0.2,
-                                0.2,
-                              ),
-                              blurRadius: 5,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(
-                              Icons.messenger_outline,
-                              color: Color(0xff22C55E),
-                            ),
-                            Text(
-                              "Group Chat",
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff22C55E),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 90, right: 90, top: 15, bottom: 15),
-                      decoration: BoxDecoration(color: const Color(0xff0FA654), borderRadius: BorderRadius.circular(5)),
-                      child: Text(
-                        'PROGRAM IS LIVE',
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemCount: 3,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: AppTheme.backgroundcolor,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    offset: Offset(
-                                      1,
-                                      1,
-                                    ), //Offset
-                                    blurRadius: 1,
-
-                                    blurStyle: BlurStyle.normal,
-                                    spreadRadius: 1,
-                                  )
-                                ],
-                                // border: Border.all(color: AppTheme.primaryColor)
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      "Overview",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xff595959),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                        onTap: () {
-                                          boolList[index] = !boolList[index];
-                                          setState(() {});
-                                        },
-                                        child: const Icon(Icons.keyboard_arrow_down_rounded))
-                                  ],
+                            Positioned(
+                              left: 25,
+                              top: 0,
+                              bottom: 0,
+                              child: CircleAvatar(
+                                maxRadius: 20,
+                                minRadius: 20,
+                                backgroundColor: Color(0xffADADAD),
+                                child: Text(
+                                  'p',
+                                  style: TextStyle(color: Colors.black, fontSize: 15),
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 5),
-                            if (boolList[index] == true)
+                            Positioned(
+                              left: 60,
+                              top: 0,
+                              bottom: 0,
+                              child: CircleAvatar(
+                                maxRadius: 20,
+                                minRadius: 20,
+                                backgroundColor: Color(0xff525252),
+                                child: Text(
+                                  'k',
+                                  style: TextStyle(color: Colors.black, fontSize: 15),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          "+ 350 Enrolled",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: AppTheme.blackcolor,
+                          ),
+                        ),
+                        const Spacer(),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(
+                                  0.2,
+                                  0.2,
+                                ),
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.messenger_outline,
+                                color: Color(0xff22C55E),
+                              ),
+                              Text(
+                                "Group Chat",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff22C55E),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: Get.width,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(color: const Color(0xff0FA654), borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          'PROGRAM IS LIVE',
+                          style: GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Column(
+                            children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
                                   color: AppTheme.backgroundcolor,
-                                  boxShadow: [
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: const [
                                     BoxShadow(
-                                      offset: const Offset(5, 5),
-                                      color: Colors.grey.shade300,
-                                      spreadRadius: .2,
-                                      blurRadius: 10,
-                                    ),
+                                      color: Colors.black12,
+                                      offset: Offset(
+                                        1,
+                                        1,
+                                      ), //Offset
+                                      blurRadius: 1,
+
+                                      blurStyle: BlurStyle.normal,
+                                      spreadRadius: 1,
+                                    )
                                   ],
+                                  // border: Border.all(color: AppTheme.primaryColor)
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                  child: Text(
-                                    "Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayoría sufrió alteraciones en alguna manera, ya sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff595959),
-                                    ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                       Text(
+                                        index == 0 ? "Overview" : index == 1 ? "How it works?" :"Structure",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff595959),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                          onTap: () {
+                                            boolList[index] = !boolList[index];
+                                            setState(() {});
+                                          },
+                                          child: const Icon(Icons.keyboard_arrow_down_rounded))
+                                    ],
                                   ),
                                 ),
                               ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemCount: 3,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                              child: Row(
+                              const SizedBox(height: 5),
+                              if (boolList[index] == true)
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: AppTheme.backgroundcolor,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        offset: const Offset(5, 5),
+                                        color: Colors.grey.shade300,
+                                        spreadRadius: .2,
+                                        blurRadius: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                    child: Text(
+                                      "Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayoría sufrió alteraciones en alguna manera, ya sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppTheme.subTitleColor,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Column(
+                            children: [
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
                                     "Session ${index + 1} | Duration 90 mins",
                                     style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       color: AppTheme.blackcolor,
                                     ),
@@ -454,26 +457,23 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                   const Text(
                                     "20 Aug 2021",
                                     style: TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       color: AppTheme.grayColor,
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                            const SizedBox(height: 5),
-                            if (boolList2[index] == true)
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                child: Column(
+                              const SizedBox(height: 5),
+                              if (boolList2[index] == true)
+                                const Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Orientation',
                                       style: TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                         color: AppTheme.grayColor,
                                       ),
@@ -481,7 +481,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                     Text(
                                       'Diagnosis form filling process',
                                       style: TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                         color: AppTheme.grayColor,
                                       ),
@@ -489,7 +489,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                     Text(
                                       'Basic Kumbhak module',
                                       style: TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                         color: AppTheme.grayColor,
                                       ),
@@ -497,7 +497,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                     Text(
                                       'Q&A',
                                       style: TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                         color: AppTheme.grayColor,
                                       ),
@@ -507,7 +507,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                         Text(
                                           'Diabetes Module ',
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             color: Color(0xff22C55E),
                                           ),
@@ -526,7 +526,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                         Text(
                                           'Kumbhak Practices ',
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             color: Color(0xff22C55E),
                                           ),
@@ -545,7 +545,7 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                         Text(
                                           'Diet Chart',
                                           style: TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             color: Color(0xff22C55E),
                                           ),
@@ -561,16 +561,16 @@ class _ProgrammeDetailsScreenState extends State<ProgrammeDetailsScreen> {
                                     ),
                                   ],
                                 ),
-                              ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            )
-          ],
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

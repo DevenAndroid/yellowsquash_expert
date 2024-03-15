@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../widgets/addsize.dart';
 import '../widgets/apptheme.dart';
 import '../widgets/common_text_field.dart';
+import '../widgets/custom_dropdown.dart';
 import '../widgets/helper.dart';
 
 class MyAccountScreen extends StatefulWidget {
@@ -28,6 +29,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
   Rx<File> categoryFile = File("").obs;
   String? categoryValue;
   String? selectDetails = "Basic Details";
+  String? condition;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -185,8 +187,21 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     const SizedBox(
                       height: 5,
                     ),
-                    const RegisterTextFieldWidget(
-                      hint: 'Saikat Kumar',
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: const RegisterTextFieldWidget(
+                        hint: 'Saikat Kumar',
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -253,27 +268,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                       height: 5,
                     ),
                     Container(
-                      height: 50,
                       decoration: BoxDecoration(
-                          color: AppTheme.backgroundcolor,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: AppTheme.greenColor)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Select location",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff595959),
-                              ),
-                            ),
-                            GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                          ],
-                        ),
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: CustomDropdownTextField(
+                        items: const ['Male', 'Female'],
+                        hintText: 'Select Location',
+                        onChanged: (value) {
+                          condition = value;
+                          if (kDebugMode) {
+                            print('Selected item: $value');
+                          }
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -287,27 +301,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                       height: 5,
                     ),
                     Container(
-                      height: 50,
                       decoration: BoxDecoration(
-                          color: AppTheme.backgroundcolor,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: AppTheme.greenColor)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Select timezone",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff595959),
-                              ),
-                            ),
-                            GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                          ],
-                        ),
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: CustomDropdownTextField(
+                        items: const ['Male', 'Female'],
+                        hintText: 'Select Timezone',
+                        onChanged: (value) {
+                          condition = value;
+                          if (kDebugMode) {
+                            print('Selected item: $value');
+                          }
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -321,27 +334,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                       height: 5,
                     ),
                     Container(
-                      height: 50,
                       decoration: BoxDecoration(
-                          color: AppTheme.backgroundcolor,
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: AppTheme.greenColor)),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "Select expertise",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff595959),
-                              ),
-                            ),
-                            GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                          ],
-                        ),
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: CustomDropdownTextField(
+                        items: const ['Male', 'Female'],
+                        hintText: 'Select Experts',
+                        onChanged: (value) {
+                          condition = value;
+                          if (kDebugMode) {
+                            print('Selected item: $value');
+                          }
+                        },
                       ),
                     ),
                     const SizedBox(
@@ -398,27 +410,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     height: 5,
                   ),
                   Container(
-                    height: 50,
                     decoration: BoxDecoration(
-                        color: AppTheme.backgroundcolor,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: AppTheme.greenColor)),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Msc in Applied Nutrition",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff595959),
-                            ),
-                          ),
-                          GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                        ],
-                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(5, 5),
+                          color: Colors.grey.shade300,
+                          spreadRadius: .5,
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    child: CustomDropdownTextField(
+                      items: const ['Male', 'Female'],
+                      hintText: 'Select Timezone',
+                      onChanged: (value) {
+                        condition = value;
+                        if (kDebugMode) {
+                          print('Selected item: $value');
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -445,27 +456,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     height: 5,
                   ),
                   Container(
-                    height: 50,
                     decoration: BoxDecoration(
-                        color: AppTheme.backgroundcolor,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: AppTheme.greenColor)),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "2014",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff595959),
-                            ),
-                          ),
-                          GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                        ],
-                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(5, 5),
+                          color: Colors.grey.shade300,
+                          spreadRadius: .5,
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    child: CustomDropdownTextField(
+                      items: const ['Male', 'Female'],
+                      hintText: 'Select Timezone',
+                      onChanged: (value) {
+                        condition = value;
+                        if (kDebugMode) {
+                          print('Selected item: $value');
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -562,7 +572,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.upload_file,
                                     color: AppTheme.greenColor,
                                     size: 50,

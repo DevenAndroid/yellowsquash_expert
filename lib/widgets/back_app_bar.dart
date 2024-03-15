@@ -12,6 +12,7 @@ AppBar backAppBar(
       Widget? icon,
       disposeController}) {
   return AppBar(
+    surfaceTintColor: AppTheme.backgroundcolor,
     elevation: 0,
     backgroundColor: backgroundColor,
     title: Text(
@@ -26,7 +27,7 @@ AppBar backAppBar(
             Get.back();
           },
           child: icon ??
-              Icon(Icons.arrow_back_ios_rounded,color: iconColor,size: 20,)),
+              Icon(Icons.arrow_back_rounded,color: iconColor,size: 20,)),
     ),
   );
 }

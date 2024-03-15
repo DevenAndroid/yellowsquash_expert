@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/apptheme.dart';
 import '../widgets/common_text_field.dart';
+import '../widgets/custom_dropdown.dart';
 import '../widgets/helper.dart';
 
 class BookAppointmentScreen extends StatefulWidget {
@@ -20,6 +22,7 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
   Rx<List<File>> images = Rx<List<File>>([]);
   Rx<File> categoryFile = File("").obs;
   String? categoryValue;
+  String? condition;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -88,27 +91,26 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                     height: 5,
                   ),
                   Container(
-                    height: 50,
                     decoration: BoxDecoration(
-                        color: AppTheme.backgroundcolor,
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: AppTheme.greenColor)),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: size.width * .04, vertical: size.height * .01),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Select Condition",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff595959),
-                            ),
-                          ),
-                          GestureDetector(onTap: () {}, child: const Icon(Icons.keyboard_arrow_down_rounded))
-                        ],
-                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(5, 5),
+                          color: Colors.grey.shade300,
+                          spreadRadius: .5,
+                          blurRadius: 10,
+                        ),
+                      ],
+                    ),
+                    child: CustomDropdownTextField(
+                      items: const ['Male', 'Female'],
+                      hintText: 'Select Condition',
+                      onChanged: (value) {
+                        condition = value;
+                        if (kDebugMode) {
+                          print('Selected item: $value');
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(

@@ -19,9 +19,16 @@ class _HomepageScreenState extends State<HomepageScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        backgroundColor: AppTheme.backgroundcolor,
         appBar: AppBar(
           toolbarHeight: 0,
+          backgroundColor: AppTheme.backgroundcolor,
           bottom: const TabBar(
+            unselectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey),
+            unselectedLabelColor: Colors.grey,
+            labelColor: AppTheme.blackColor,
+            labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            indicatorColor: AppTheme.yellowColor,
             tabs: [
               Tab(text: 'Introduction'),
               Tab(text: 'Approach'),

@@ -34,14 +34,14 @@ class _TeamFormScreenState extends State<TeamFormScreen> {
             children: [
               Text(
                 'TEAM MEMBER 1',
-                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
                 'Name',
-                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
               ),
               const SizedBox(height: 5,),
               const RegisterTextFieldWidget(
@@ -52,7 +52,7 @@ class _TeamFormScreenState extends State<TeamFormScreen> {
               ),
               Text(
                 'Role',
-                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
               ),
               const SizedBox(height: 5,),
               const RegisterTextFieldWidget(
@@ -63,7 +63,7 @@ class _TeamFormScreenState extends State<TeamFormScreen> {
               ),
               Text(
                 'Phone number',
-                style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
               ),
               const SizedBox(height: 5,),
               const RegisterTextFieldWidget(

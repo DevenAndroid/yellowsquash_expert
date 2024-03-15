@@ -58,58 +58,71 @@ class RegisterTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: const TextStyle(color: Color(0xFF384953)),
-      onTap: onTap,
-      onChanged: onChanged,
-      readOnly: readOnly!,
-      controller: controller,
-      obscureText: hint == hint ? obscureText! : false,
-      autofillHints: autofillHints,
-      validator: validator,
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      minLines: minLines,
-      maxLines: maxLines,
-      cursorColor: AppTheme.primaryColor,
-      inputFormatters: [
-        ...inputFormatters ?? [],
-        LengthLimitingTextInputFormatter(length),
-        if (digitValue != null) digitValue!
-      ],
-      decoration: InputDecoration(
-          hintText: hint,
-          focusColor: const Color(0xFF384953),
-          hintStyle: GoogleFonts.poppins(
-            color: const Color(0xFF595959),
-            textStyle: GoogleFonts.poppins(
-              color: const Color(0xFF384953),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(5, 5),
+            color: Colors.grey.shade300,
+            spreadRadius: .5,
+            blurRadius: 10,
+          ),
+        ],
+      ),
+      child: TextFormField(
+        style: const TextStyle(color: Color(0xFF384953)),
+        onTap: onTap,
+        onChanged: onChanged,
+        readOnly: readOnly!,
+        controller: controller,
+        obscureText: hint == hint ? obscureText! : false,
+        autofillHints: autofillHints,
+        validator: validator,
+        keyboardType: keyboardType,
+        textInputAction: textInputAction,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        minLines: minLines,
+        maxLines: maxLines,
+        cursorColor: AppTheme.primaryColor,
+        inputFormatters: [
+          ...inputFormatters ?? [],
+          LengthLimitingTextInputFormatter(length),
+          if (digitValue != null) digitValue!
+        ],
+        decoration: InputDecoration(
+            hintText: hint,
+            focusColor: const Color(0xFF384953),
+            hintStyle: GoogleFonts.poppins(
+              color: const Color(0xFF595959),
+              textStyle: GoogleFonts.poppins(
+                color: const Color(0xFF384953),
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+              ),
               fontSize: 14,
+              // fontFamily: 'poppins',
               fontWeight: FontWeight.w300,
             ),
-            fontSize: 14,
-            // fontFamily: 'poppins',
-            fontWeight: FontWeight.w300,
-          ),
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          // .copyWith(top: maxLines! > 4 ? AddSize.size18 : 0),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppTheme.greenColor),
-            borderRadius: BorderRadius.circular(6.0),
-          ),
-          enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: AppTheme.greenColor),
-              borderRadius: BorderRadius.all(Radius.circular(6.0))),
-          border: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppTheme.greenColor, width: 3.0),
-              borderRadius: BorderRadius.circular(6.0)),
-          suffixIcon: suffixIcon,
-          suffix: suffix,
-          prefix: prefix,
-          prefixIcon: prefixIcon),
+            filled: true,
+            fillColor: Colors.white,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            // .copyWith(top: maxLines! > 4 ? AddSize.size18 : 0),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(6.0),
+            ),
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.transparent),
+                borderRadius: BorderRadius.all(Radius.circular(6.0))),
+            border: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.transparent),
+                borderRadius: BorderRadius.circular(6.0)),
+            suffixIcon: suffixIcon,
+            suffix: suffix,
+            prefix: prefix,
+            prefixIcon: prefixIcon),
+      ),
     );
   }
 }

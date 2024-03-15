@@ -68,9 +68,17 @@ class _TeamScreenState extends State<TeamScreen> {
                       height: 600,
                       width: Get.width,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: const Color(0xff22C55E)),
-                          borderRadius: BorderRadius.circular(8)),
+                        color: AppTheme.backgroundcolor,
+                        borderRadius: BorderRadius.circular(6),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -129,7 +137,8 @@ class _TeamScreenState extends State<TeamScreen> {
                         ],
                       ),
                     );
-                  })
+                  }),
+              const SizedBox(height: 20,)
             ],
           ),
         ),

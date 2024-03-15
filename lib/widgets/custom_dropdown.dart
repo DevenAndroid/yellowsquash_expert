@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yellowsquash_expert/widgets/apptheme.dart';
 
 class CustomDropdownTextField extends StatefulWidget {
   final List<String> items;
@@ -30,6 +31,7 @@ class _CustomDropdownTextFieldState extends State<CustomDropdownTextField> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
+      dropdownColor: AppTheme.backgroundcolor,
       value: _selectedItem,
       items: widget.items.map((String value) {
         return DropdownMenuItem<String>(
@@ -62,14 +64,14 @@ class _CustomDropdownTextFieldState extends State<CustomDropdownTextField> {
           contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           // .copyWith(top: maxLines! > 4 ? AddSize.size18 : 0),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFF2D2D2D)),
+            borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(6.0),
           ),
           enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFF2D2D2D)),
+              borderSide: BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.all(Radius.circular(6.0))),
           border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xFF2D2D2D), width: 1.0),
+              borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(6.0)),
           suffixIcon: widget.suffixIcon,
           suffix: widget.suffix,
