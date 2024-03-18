@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:yellowsquash_expert/screens/HomePage.dart';
 import 'package:yellowsquash_expert/screens/HomePageScreen.dart';
 import 'package:yellowsquash_expert/screens/blog_screen/blogsScreen.dart';
+import 'package:yellowsquash_expert/screens/event_screen.dart';
 import 'package:yellowsquash_expert/screens/login_screen.dart';
 import 'package:yellowsquash_expert/screens/myAccountScreen.dart';
 import 'package:yellowsquash_expert/screens/patient_screen/patientDashboardScreen.dart';
@@ -253,7 +254,10 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                                 thickness: 1,
                                 color: Colors.grey.shade300,
                               ),
-                              drawerTile1(active: true, title: "Calender".tr, onTap: () {}),
+                              drawerTile1(active: true, title: "Calender".tr, onTap: () {
+                                Get.to(() => const EventScreen());
+
+                              }),
                               Divider(
                                 thickness: 1,
                                 color: Colors.grey.shade300,
