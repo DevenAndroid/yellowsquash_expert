@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 import '../../../widgets/apptheme.dart';
+import '../HomePageScreen.dart';
 
 class WebinarDetailsScreen extends StatefulWidget {
   const WebinarDetailsScreen({super.key});
@@ -18,7 +20,15 @@ class WebinarDetailsScreen extends StatefulWidget {
 class _WebinarDetailsScreenState extends State<WebinarDetailsScreen> {
   late VideoPlayerController videoPlayerController;
   ChewieController? chewieController;
+  CarouselController carouselController = CarouselController();
 
+  int _currentIndex = 0;
+
+  static List<ImageModel> featuredImages = [
+    ImageModel(name: "Dr. Indira Priyadarshini", imageUrl: "assets/images/doctor.jpeg", count: 100),
+    ImageModel(name: "Dr. Indira Priyadarshini", imageUrl: "assets/images/doctor.png", count: 102),
+    ImageModel(name: "Dr. Indira Priyadarshini", imageUrl: "assets/images/doctor.jpeg", count: 104),
+  ];
   @override
   void initState() {
     super.initState();
@@ -636,10 +646,12 @@ class _WebinarDetailsScreenState extends State<WebinarDetailsScreen> {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit suscipit tellus orci ornare amet, ",
-                                      style: GoogleFonts.poppins(
-                                          color: AppTheme.blackcolor, fontWeight: FontWeight.w400, fontSize: 12),
+                                    Flexible(
+                                      child: Text(
+                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit suscipit tellus orci ornare amet, ",
+                                        style: GoogleFonts.poppins(
+                                            color: AppTheme.blackcolor, fontWeight: FontWeight.w400, fontSize: 12),
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -663,71 +675,128 @@ class _WebinarDetailsScreenState extends State<WebinarDetailsScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Center(
-                      child: CircleAvatar(
-                        maxRadius: 40,
-                        minRadius: 40,
-                        backgroundImage: NetworkImage(
-                          "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+      Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(5, 5),
+                      color: Colors.grey.shade300,
+                      spreadRadius: .5,
+                      blurRadius: 10,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: CarouselSlider(
+                        carouselController: carouselController, // Give the controller
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          height: 120,
+                          viewportFraction: 1,
+                          onPageChanged: (index, reason) {
+                            // Implement logic to change dot color here
+                            // You can use setState to update the color based on the current index
+                          },
                         ),
+                        items: featuredImages.map((featuredImage) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return Container(
+                                padding: const EdgeInsets.only(left: 20, right: 20),
+                                width: Get.width,
+                                decoration: const BoxDecoration(),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          CircleAvatar(
+                                            maxRadius: 20,
+                                            minRadius: 20,
+                                            child: Image.asset('assets/images/doctor.png'),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          const Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Patient Name',
+                                                style: TextStyle(
+                                                    color: Color(0xff0EA89D), fontSize: 14, fontWeight: FontWeight.w600),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                'Location',
+                                                style: TextStyle(
+                                                    color: Color(0xff0EA89D), fontSize: 10, fontWeight: FontWeight.w400),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      const Text(
+                                        'Lorem ipsum dolor sit amet consectetur. Nulla et a tristique nisi. Dolor id diam hac tristique rutrum. Facilisis non quis porttitor.',
+                                        style: TextStyle(
+                                            color: AppTheme.grayColor, fontWeight: FontWeight.w400, fontSize: 10),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }).toList(),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
+
+                    const SizedBox(height: 10), // Space for dot indicators
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: featuredImages.map((featuredImage) {
+                  int index = featuredImages.indexOf(featuredImage);
+                  return Container(
+                    width: 8,
+                    height: 8,
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentIndex == index ? AppTheme.yellowColor : Colors.grey.shade400,
                     ),
-                    Center(
-                      child: Text(
-                        "Bhavesh Patel",
-                        style: GoogleFonts.poppins(color: AppTheme.blackcolor, fontWeight: FontWeight.w400, fontSize: 16),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu etiam nisi, dolor elementum odio malesuada volutpat. Et amet.",
-                      textAlign: TextAlign.center,
-                      style:
-                          GoogleFonts.poppins(color: AppTheme.grayColor, fontWeight: FontWeight.w400, fontSize: 14),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: const Color(0xffFFE575),
-                              backgroundColor: const Color(0xffF9D121),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6),
-                              )),
-                          child: const Center(
-                              child: Row(
-                            children: [
-                              Text("Play Video",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: AppTheme.blackcolor)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Icon(
-                                Icons.play_circle,
-                                color: AppTheme.blackcolor,
-                                size: 20,
-                              )
-                            ],
-                          )),
-                        ),
-                      ),
-                    ),
+                  );
+                }).toList(),
+              ),
+            ],
+          )
+        ],
+      ),
                   ],
                 ),
               ),

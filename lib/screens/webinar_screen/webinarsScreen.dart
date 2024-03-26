@@ -125,10 +125,11 @@ class _WebinarsScreenState extends State<WebinarsScreen> {
                                             const SizedBox(height: 10,),
                                             Text(
                                               "Functional Medicine Program for Autism & Developmental Disorders",
+                                              maxLines: 3,
                                               style: GoogleFonts.poppins(
                                                   color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                             ),
-                                            const SizedBox(height: 10,),
+                                            const SizedBox(height: 5,),
                                             Text(
                                               "DRAFT",
                                               style: GoogleFonts.poppins(

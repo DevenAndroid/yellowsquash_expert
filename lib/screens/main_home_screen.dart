@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -340,21 +341,26 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     color: Colors.black,
                   )),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: 30,
-                    child: Container(
-                      decoration:
-                          BoxDecoration(border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(100)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: CachedNetworkImage(
-                          fit: BoxFit.cover,
-                          imageUrl:
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJiaZKjOQS7I-ftDQKzagCOWIZUonEoHS-p4OpngN4lg&s",
-                          errorWidget: (_, __, ___) => const Icon(Icons.person),
-                          placeholder: (_, __) => const SizedBox(),
+                GestureDetector(
+                  onTap: (){
+                    Get.to(const MyAccountScreen());
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 30,
+                      child: Container(
+                        decoration:
+                            BoxDecoration(border: Border.all(color: Colors.black), borderRadius: BorderRadius.circular(100)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            imageUrl:
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJiaZKjOQS7I-ftDQKzagCOWIZUonEoHS-p4OpngN4lg&s",
+                            errorWidget: (_, __, ___) => const Icon(Icons.person),
+                            placeholder: (_, __) => const SizedBox(),
+                          ),
                         ),
                       ),
                     ),

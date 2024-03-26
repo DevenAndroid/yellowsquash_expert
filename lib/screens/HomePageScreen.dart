@@ -19,11 +19,7 @@ class HomepageScreen extends StatefulWidget {
 class _HomepageScreenState extends State<HomepageScreen> {
   CarouselController carouselController = CarouselController();
 
-  // final featuredImages = [
-  //   'assets/images/doctor.jpeg',
-  //   'assets/images/doctor.png',
-  //   'assets/images/doctor.jpeg'
-  // ];
+  int _currentIndex = 0;
 
   static List<ImageModel> featuredImages = [
     ImageModel(name: "Dr. Indira Priyadarshini", imageUrl: "assets/images/doctor.jpeg", count: 100),
@@ -35,6 +31,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        extendBody: true,
         backgroundColor: AppTheme.backgroundcolor,
         appBar: AppBar(
           toolbarHeight: 0,
@@ -47,83 +44,116 @@ class _HomepageScreenState extends State<HomepageScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl:
-                    "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
-                fit: BoxFit.cover,
-                errorWidget: (_, __, ___) => const SizedBox(),
-                placeholder: (_, __) => Image.asset(
-                  'assets/images/doctor.png',
-                  color: Colors.grey.shade200,
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
+              Container(
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  Color(0xff0EA89D),
+                  Color(0x54049c91),
+                ])),
                 child: Column(
                   children: [
-                    Text(
-                      'Are You Struggling with Bloating, IBS, or SIBO?',
-                      style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: Text(
+                        'Are You Struggling with Bloating, IBS, or SIBO?',
+                        style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20, left: 20),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
+                        fit: BoxFit.cover,
+                        errorWidget: (_, __, ___) => const SizedBox(),
+                        placeholder: (_, __) => Image.asset(
+                          'assets/images/doctor.png',
+                          color: Colors.grey.shade200,
+                          height: 100,
+                          width: 100,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      '​“I believe in the body’s inherent ability to establish, maintain, and restore health. My role is to facilitate and augment this process, to identify and remove obstacles to health and recovery, and to support the creation of a healthy internal and external environment. My joy is in watching my patients regain themselves and thrive.”',
-                      style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      '– Dr. Priti Nanda Sibal',
-                      style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.greenColor),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            '​“I believe in the body’s inherent ability to establish, maintain, and restore health. My role is to facilitate and augment this process, to identify and remove obstacles to health and recovery, and to support the creation of a healthy internal and external environment. My joy is in watching my patients regain themselves and thrive.”',
+                            style: GoogleFonts.poppins(
+                                fontSize: 12, fontWeight: FontWeight.w400, color: const Color(0xff595959)),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            '– Dr. Priti Nanda Sibal',
+                            style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(const BookAppointmentScreen());
+                            },
+                            child: Container(
+                              height: 50,
+                              margin: const EdgeInsets.only(left: 80, right: 80),
+                              decoration: BoxDecoration(
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      offset: Offset(
+                                        0.2,
+                                        0.2,
+                                      ),
+                                      blurRadius: 5,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(11),
+                                  gradient: const LinearGradient(colors: [
+                                    Color(0xabf9d121),
+                                    Color(0xffFCE582),
+                                    Color(0xffF8D642),
+                                  ])),
+                              child: Center(
+                                  child: Text(
+                                'Book Appointment',
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                              )),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       height: 30,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(const BookAppointmentScreen());
-                      },
-                      child: Container(
-                        height: 50,
-                        margin: const EdgeInsets.only(left: 80, right: 80),
-                        decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.black26,
-                                offset: Offset(
-                                  0.2,
-                                  0.2,
-                                ),
-                                blurRadius: 5,
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(11),
-                            gradient: const LinearGradient(colors: [
-                              Color(0xabf9d121),
-                              Color(0xffFCE582),
-                              Color(0xffF8D642),
-                            ])),
-                        child: Center(
-                            child: Text(
-                          'Book Appointment',
-                          style: GoogleFonts.poppins(
-                              fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                        )),
-                      ),
-                    )
                   ],
                 ),
               ),
               const SizedBox(
                 height: 30,
+              ),
+              Text(
+                'A Holistic Treatment Approach',
+                style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Container(
                 margin: const EdgeInsets.only(left: 20, right: 20),
@@ -154,18 +184,38 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'A Holistic Treatment Approach',
-                      style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
                       "Lorem ipsum dolor sit amet consectetur. Dignissim amet condimentum pulvinar lacinia sed porttitor id. Ullamcorper quam nunc ipsum est nisi vel. Vulputate etiam a cras quam. Diam in cras ultricies hendrerit a risus id. Sollicitudin mattis pulvinar porttitor scelerisque sit viverra ipsum.In est nunc amet in fringilla pulvinar arcu dapibus velit etiam.Lorem ipsum dolor sit amet consectetur. Dignissim amet condimentum pulvinar lacinia sed porttitor id. Ullamcorper quam nunc ipsum est nisi vel.",
                       style: GoogleFonts.poppins(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 20,
+                    ),
+                    Container(
+                      height: 40,
+                      margin: const EdgeInsets.only(left: 80, right: 80),
+                      decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: Offset(
+                                0.2,
+                                0.2,
+                              ),
+                              blurRadius: 5,
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(11),
+                          gradient: const LinearGradient(colors: [
+                            Color(0xabf9d121),
+                            Color(0xffFCE582),
+                            Color(0xffF8D642),
+                          ])),
+                      child: Center(
+                          child: Text(
+                        'Read More',
+                        style:
+                            GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                      )),
                     ),
                   ],
                 ),
@@ -180,119 +230,111 @@ class _HomepageScreenState extends State<HomepageScreen> {
               const SizedBox(
                 height: 30,
               ),
-              ListView.builder(
-                  itemCount: 6,
+              SizedBox(
+                height: 170,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: SizedBox(
-                              height: 130,
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 15, right: 15),
-                                height: 300,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.black26,
-                                        offset: Offset(
-                                          0.2,
-                                          0.2,
-                                        ),
-                                        blurRadius: 5,
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Stack(
-                                        children: [
-                                          SizedBox(
-                                            height: 200,
-                                            child: ClipRRect(
-                                              borderRadius: const BorderRadius.only(
-                                                  topLeft: Radius.circular(6), bottomLeft: Radius.circular(6)),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
-                                                fit: BoxFit.cover,
-                                                errorWidget: (_, __, ___) => const SizedBox(),
-                                                placeholder: (_, __) => Image.asset(
-                                                  'assets/images/doctor.png',
-                                                  color: Colors.grey.shade200,
-                                                  height: 100,
-                                                  width: 100,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                              top: 10,
-                                              left: 10,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400,
-                                                  borderRadius: BorderRadius.circular(100),
-                                                ),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(4.0),
-                                                  child: Icon(
-                                                    Icons.favorite,
-                                                    color: Color(0xffCC3D36),
-                                                    size: 15,
-                                                  ),
-                                                ),
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "Irritable Bowel Syndrome",
-                                            style: GoogleFonts.poppins(
-                                                color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 14),
-                                          ),
-                                          const Spacer(),
-                                          Text(
-                                            "Lorem ipsum dolor sit amet consectetur. Consequat quam nisl arcu pellentesque amet mauris sapien. Aliquet",
-                                            style: GoogleFonts.poppins(
-                                                color: const Color(0xff444444),
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 10),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(width: 10),
-                                  ],
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 10, left: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(5, 5),
+                            color: Colors.grey.shade300,
+                            spreadRadius: .5,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center, // Centered the column items
+                        children: [
+                          Container(
+                            width: 140,
+                            height: 120, // Added width to the container
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(5, 5),
+                                  color: Colors.grey.shade300,
+                                  spreadRadius: .5,
+                                  blurRadius: 10,
                                 ),
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                      ],
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                                fit: BoxFit.cover,
+                                errorWidget: (_, __, ___) => const Icon(
+                                  Icons.category,
+                                  color: Color(0xff22C55E),
+                                ),
+                                placeholder: (_, __) => const SizedBox(),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Flexible(
+                            child: Text(
+                              "Irritable Bowel \n Syndrome",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 12, fontWeight: FontWeight.w500, color: AppTheme.headlineColor),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
-                  }),
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'What Our Client Says ',
+                style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ImageSlider(),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Featured In',
+                style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 100,
+                child: ListView.builder(
+                    itemCount: 5,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (index, context) {
+                      return Image.asset(
+                        'assets/images/assocham.png',
+                        height: 80,
+                        width: 120,
+                      );
+                    }),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 'Our Workshops',
                 style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
@@ -300,208 +342,107 @@ class _HomepageScreenState extends State<HomepageScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: Get.width,
-                padding: EdgeInsets.zero,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: Colors.white),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 10,
-                        ),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: 280,
-                              padding: const EdgeInsets.only(left: 20, right: 20),
-                              // height: 320,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: const Offset(5, 5),
-                                    color: Colors.grey.shade300,
-                                    spreadRadius: .5,
-                                    blurRadius: 10,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      CarouselSlider(
-                                        carouselController: carouselController, // Give the controller
-                                        options: CarouselOptions(autoPlay: true, height: 200, viewportFraction: 4),
-                                        items: featuredImages.map((featuredImage) {
-                                          return Image.asset(
-                                            featuredImage.imageUrl,
-                                            fit: BoxFit.cover,
-                                            height: 200,
-                                            width: 280,
-                                          );
-                                        }).toList(),
-                                      ),
-                                      const SizedBox(height: 20),
-                                      Row(
-                                        children: [
-                                          RatingBarIndicator(
-                                            rating: 4,
-                                            itemCount: 5,
-                                            itemSize: 20.0,
-                                            unratedColor: Colors.grey,
-                                            physics: const BouncingScrollPhysics(),
-                                            itemBuilder: (context, _) => const Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
-                                            ),
-                                          ),
-                                          const Text(
-                                            " 4.9 Reviews",
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: Color(0xff595959),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Dr. Indira Priyadarshini",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 20, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/calender.png',
-                                            height: 20,
-                                          ),
-                                          const SizedBox(
-                                            width: 15,
-                                          ),
-                                          const Expanded(
-                                            child: Text(
-                                              "Feb 7, 2024 | 7:30 PM - 9:00 PM ",
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppTheme.blackcolor),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/languaage.png',
-                                            height: 20,
-                                          ),
-                                          const SizedBox(
-                                            width: 15,
-                                          ),
-                                          const Text(
-                                            "English, Hindi",
-                                            style: TextStyle(
-                                                fontSize: 14, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            '₹ 299',
-                                            style: GoogleFonts.oswald(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xff0EA89D)),
-                                          ),
-                                          const SizedBox(
-                                            width: 15,
-                                          ),
-                                          Container(
-                                            width: 100,
-                                            height: 40,
-                                            padding: const EdgeInsets.only(top: 5, bottom: 5),
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xff0EA89D),
-                                                borderRadius: BorderRadius.circular(15)),
-                                            child: Center(
-                                              child: Text(
-                                                'Buy',
-                                                style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 30,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+              SizedBox(
+                height: 272,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (index, context) {
+                      return Container(
+                        width: 200,
+                        margin: const EdgeInsets.only(left: 10),
+                        // height: 320,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(5, 5),
+                              color: Colors.grey.shade300,
+                              spreadRadius: .5,
+                              blurRadius: 10,
                             ),
-                            Positioned(
-                              left: -50,
-                              top: 150,
-                              child: IconButton(
-                                onPressed: () {
-                                  carouselController.previousPage();
-                                },
-                                icon: const CircleAvatar(
-                                    backgroundColor: Color(0xffFFE575),
-                                    maxRadius: 12,
-                                    minRadius: 12,
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.arrow_back_ios_new_rounded,
-                                      color: Colors.white,
-                                      size: 15,
-                                    ))),
-                              ),
-                            ),
-                            Positioned(
-                              right: -50,
-                              top: 150,
-                              child: IconButton(
-                                onPressed: () {
-                                  carouselController.previousPage();
-                                },
-                                icon: const CircleAvatar(
-                                    backgroundColor: Color(0xffFFE575),
-                                    maxRadius: 12,
-                                    minRadius: 12,
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.arrow_forward_ios_rounded,
-                                      color: Colors.white,
-                                      size: 15,
-                                    ))),
-                              ),
-                            )
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                        child: Stack(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/doctor.png',
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 150,
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  children: [
+                                    RatingBarIndicator(
+                                      rating: 4,
+                                      itemCount: 5,
+                                      itemSize: 20.0,
+                                      unratedColor: Colors.grey,
+                                      physics: const BouncingScrollPhysics(),
+                                      itemBuilder: (context, _) => const Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      ),
+                                    ),
+                                    const Text(
+                                      " 4.9 Reviews",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff595959),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  "Functional Medicine Program For Digestive...",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                                ),
+                                const SizedBox(height: 10),
+                                Container(
+                                  width: 150,
+                                  height: 40,
+                                  padding: const EdgeInsets.only(top: 5, bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xff0EA89D), borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          'Buy',
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               ),
               const SizedBox(
                 height: 20,
@@ -513,220 +454,107 @@ class _HomepageScreenState extends State<HomepageScreen> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                width: Get.width,
-                padding: EdgeInsets.zero,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), color: Colors.white),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 10,
-                        ),
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: 280,
-                              padding: const EdgeInsets.only(left: 20, right: 20),
-                              // height: 320,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    offset: const Offset(5, 5),
-                                    color: Colors.grey.shade300,
-                                    spreadRadius: .5,
-                                    blurRadius: 10,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      CarouselSlider(
-                                        carouselController: carouselController, // Give the controller
-                                        options: CarouselOptions(autoPlay: true, height: 200, viewportFraction: 4),
-                                        items: featuredImages.map((featuredImage) {
-                                          return Image.asset(
-                                            featuredImage.imageUrl,
-                                            fit: BoxFit.cover,
-                                            height: 200,
-                                            width: 280,
-                                          );
-                                        }).toList(),
-                                      ),
-                                      const SizedBox(height: 20),
-                                      Row(
-                                        children: [
-                                          RatingBarIndicator(
-                                            rating: 4,
-                                            itemCount: 5,
-                                            itemSize: 20.0,
-                                            unratedColor: Colors.grey,
-                                            physics: const BouncingScrollPhysics(),
-                                            itemBuilder: (context, _) => const Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
-                                            ),
-                                          ),
-                                          const Text(
-                                            " 4.9 Reviews",
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w400,
-                                              color: Color(0xff595959),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 10),
-                                      Text(
-                                        "Dr. Indira Priyadarshini",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 20, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                                      ),
-                                      const SizedBox(height: 10),
-                                      const Row(
-                                        children: [
-                                          Icon(Icons.language),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Text(
-                                            "English, Hindi",
-                                            style: TextStyle(
-                                                fontSize: 14, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
-                                      const Row(
-                                        children: [
-                                          Icon(Icons.person),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              "200 + Enrolled",
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppTheme.blackcolor),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
-                                      const Row(
-                                        children: [
-                                          Icon(Icons.file_copy_outlined),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              "Sessions 11",
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppTheme.blackcolor),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            '₹ 1500',
-                                            style: GoogleFonts.oswald(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xff0EA89D)),
-                                          ),
-                                          const SizedBox(
-                                            width: 15,
-                                          ),
-                                          Container(
-                                            width: 100,
-                                            height: 40,
-                                            padding: const EdgeInsets.only(top: 5, bottom: 5),
-                                            decoration: BoxDecoration(
-                                                color: const Color(0xff0EA89D),
-                                                borderRadius: BorderRadius.circular(15)),
-                                            child: Center(
-                                              child: Text(
-                                                'Buy',
-                                                style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 30,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+              SizedBox(
+                height: 272,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (index, context) {
+                      return Container(
+                        width: 200,
+                        margin: const EdgeInsets.only(left: 10),
+                        // height: 320,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(5, 5),
+                              color: Colors.grey.shade300,
+                              spreadRadius: .5,
+                              blurRadius: 10,
                             ),
-                            Positioned(
-                              left: -50,
-                              top: 150,
-                              child: IconButton(
-                                onPressed: () {
-                                  carouselController.previousPage();
-                                },
-                                icon: const CircleAvatar(
-                                    backgroundColor: Color(0xffFFE575),
-                                    maxRadius: 12,
-                                    minRadius: 12,
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.arrow_back_ios_new_rounded,
-                                      color: Colors.white,
-                                      size: 15,
-                                    ))),
-                              ),
-                            ),
-                            Positioned(
-                              right: -50,
-                              top: 150,
-                              child: IconButton(
-                                onPressed: () {
-                                  carouselController.previousPage();
-                                },
-                                icon: const CircleAvatar(
-                                    backgroundColor: Color(0xffFFE575),
-                                    maxRadius: 12,
-                                    minRadius: 12,
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.arrow_forward_ios_rounded,
-                                      color: Colors.white,
-                                      size: 15,
-                                    ))),
-                              ),
-                            )
                           ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                        child: Stack(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/doctor.png',
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 150,
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  children: [
+                                    RatingBarIndicator(
+                                      rating: 4,
+                                      itemCount: 5,
+                                      itemSize: 20.0,
+                                      unratedColor: Colors.grey,
+                                      physics: const BouncingScrollPhysics(),
+                                      itemBuilder: (context, _) => const Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                      ),
+                                    ),
+                                    const Text(
+                                      " 4.9 Reviews",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff595959),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  "Functional Medicine Program For Digestive...",
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                                ),
+                                const SizedBox(height: 10),
+                                Container(
+                                  width: 150,
+                                  height: 40,
+                                  padding: const EdgeInsets.only(top: 5, bottom: 5),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xff0EA89D), borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          'Buy',
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w400, fontSize: 16, color: Colors.white),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               ),
               const SizedBox(
                 height: 30,
@@ -736,147 +564,173 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 style: GoogleFonts.oswald(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
-              ListView.builder(
-                  itemCount: 2,
+              SizedBox(
+                height: 156,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        const SizedBox(
-                          height: 10,
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 10), // Added padding
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          // height: 150,
+                          width: 170,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                offset: const Offset(5, 5),
+                                color: Colors.grey.shade300,
+                                spreadRadius: .5,
+                                blurRadius: 10,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(6),
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                  errorWidget: (_, __, ___) => const Icon(
+                                    Icons.category,
+                                    color: Color(0xff22C55E),
+                                  ),
+                                  placeholder: (_, __) => const SizedBox(),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              const Center(
+                                child: Text(
+                                  "Bone Elderly",
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontSize: 14, fontWeight: FontWeight.bold, color: AppTheme.headlineColor),
+                                ),
+                              ),
+                              const Center(
+                                child: Text(
+                                  "Lung",
+                                  maxLines: 2,
+                                  style: TextStyle(
+                                      fontSize: 14, fontWeight: FontWeight.bold, color: AppTheme.headlineColor),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                            ],
+                          ),
                         ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: SizedBox(
-                              height: 130,
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 15, right: 15),
-                                height: 300,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.black26,
-                                        offset: Offset(
-                                          0.2,
-                                          0.2,
-                                        ),
-                                        blurRadius: 5,
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Stack(
-                                        children: [
-                                          SizedBox(
-                                            height: 200,
-                                            child: ClipRRect(
-                                              borderRadius: const BorderRadius.only(
-                                                  topLeft: Radius.circular(6), bottomLeft: Radius.circular(6)),
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
-                                                fit: BoxFit.cover,
-                                                errorWidget: (_, __, ___) => const SizedBox(),
-                                                placeholder: (_, __) => Image.asset(
-                                                  'assets/images/doctor.png',
-                                                  color: Colors.grey.shade200,
-                                                  height: 100,
-                                                  width: 100,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                              top: 10,
-                                              left: 10,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400,
-                                                  borderRadius: BorderRadius.circular(100),
-                                                ),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(4.0),
-                                                  child: Icon(
-                                                    Icons.favorite,
-                                                    color: Color(0xffCC3D36),
-                                                    size: 15,
-                                                  ),
-                                                ),
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20,right: 20),
+                child: Stack(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: CarouselSlider(
+                            carouselController: carouselController, // Give the controller
+                            options: CarouselOptions(
+                              autoPlay: true,
+                              height: 150,
+                              viewportFraction: 1,
+                              onPageChanged: (index, reason) {
+                                // Implement logic to change dot color here
+                                // You can use setState to update the color based on the current index
+                              },
+                            ),
+                            items: featuredImages.map((featuredImage) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    width: Get.width,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                      image: AssetImage(featuredImage.imageUrl),
+                                      //   Assets(
+                                      //   featuredImage.imageUrl,
+                                      fit: BoxFit.cover,
+                                      // height: 150,
+                                      // width: Get.width,
+                                      // ),
+                                    )),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(18.0),
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
                                           Text(
-                                            "Irritable Bowel Syndrome",
-                                            style: GoogleFonts.poppins(
-                                                color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 14),
+                                            "Start Your Healing Journey!",
+                                            style: GoogleFonts.oswald(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                          const Spacer(),
-                                          Text(
-                                            "Lorem ipsum dolor sit amet consectetur. Consequat quam nisl arcu pellentesque amet mauris sapien. Aliquet",
-                                            style: GoogleFonts.poppins(
-                                                color: const Color(0xff444444),
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 10),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(8), color: Colors.white),
+                                                child: const Padding(
+                                                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 4),
+                                                  child: Row(
+                                                    children: [
+                                                      Center(
+                                                          child: Text(
+                                                        "Book Now",
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          color: Colors.black,
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      )),
+                                                      SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Icon(Icons.arrow_forward)
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 10),
-                                  ],
-                                ),
-                              )),
-                        ),
-                      ],
-                    );
-                  }),
-              InkWell(
-                onTap: () {
-                  Get.to(const BookAppointmentScreen());
-                },
-                child: Container(
-                  height: 50,
-                  margin: const EdgeInsets.only(left: 80, right: 80),
-                  decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(
-                            0.2,
-                            0.2,
+                                  );
+                                },
+                              );
+                            }).toList(),
                           ),
-                          blurRadius: 5,
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(11),
-                      gradient: const LinearGradient(colors: [
-                        Color(0xabf9d121),
-                        Color(0xffFCE582),
-                        Color(0xffF8D642),
-                      ])),
-                  child: Center(
-                      child: Text(
-                    'Book Appointment',
-                    style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
-                  )),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -886,6 +740,131 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget ImageSlider() {
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 20, right: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(5, 5),
+                    color: Colors.grey.shade300,
+                    spreadRadius: .5,
+                    blurRadius: 10,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: CarouselSlider(
+                      carouselController: carouselController, // Give the controller
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        height: 120,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          // Implement logic to change dot color here
+                          // You can use setState to update the color based on the current index
+                        },
+                      ),
+                      items: featuredImages.map((featuredImage) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              padding: const EdgeInsets.only(left: 20, right: 20),
+                              width: Get.width,
+                              decoration: const BoxDecoration(),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          maxRadius: 20,
+                                          minRadius: 20,
+                                          child: Image.asset('assets/images/doctor.png'),
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        const Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Patient Name',
+                                              style: TextStyle(
+                                                  color: Color(0xff0EA89D), fontSize: 14, fontWeight: FontWeight.w600),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              'Location',
+                                              style: TextStyle(
+                                                  color: Color(0xff0EA89D), fontSize: 10, fontWeight: FontWeight.w400),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    const Text(
+                                      'Lorem ipsum dolor sit amet consectetur. Nulla et a tristique nisi. Dolor id diam hac tristique rutrum. Facilisis non quis porttitor.',
+                                      style: TextStyle(
+                                          color: AppTheme.grayColor, fontWeight: FontWeight.w400, fontSize: 10),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  ),
+
+                  const SizedBox(height: 10), // Space for dot indicators
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: featuredImages.map((featuredImage) {
+                int index = featuredImages.indexOf(featuredImage);
+                return Container(
+                  width: 8,
+                  height: 8,
+                  margin: const EdgeInsets.symmetric(horizontal: 2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _currentIndex == index ? AppTheme.yellowColor : Colors.grey.shade400,
+                  ),
+                );
+              }).toList(),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

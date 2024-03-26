@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/apptheme.dart';
@@ -12,6 +14,7 @@ class DeactivatedAccount extends StatefulWidget {
 
 class _DeactivatedAccountState extends State<DeactivatedAccount> {
   int selectedValue = 1;
+  int selectedOption = 1;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size.height;
@@ -58,68 +61,85 @@ class _DeactivatedAccountState extends State<DeactivatedAccount> {
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xffA1A1A1)),
               ),
               const SizedBox(height: 15),
-              RadioListTile(
-                contentPadding: EdgeInsets.zero,
-                activeColor: AppTheme.primaryColor,
-                title: const Text(
-                  "Deactivate your account",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: AppTheme.headlineColor),
-                ),
-                subtitle: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 5),
-                    Text(
-                      "This can be temporary",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff767676)),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Radio<int>(
+                    activeColor: AppTheme.primaryColor,
+                    value: 1,
+                    groupValue: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value!;
+                      });
+                    },
+                  ),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 12),
+                        Text(
+                          "Deactivate your account",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: AppTheme.headlineColor),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "This is permanent",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff767676)),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "The account will no longer will be available and all data will be permanently removed.",
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xffA1A1A1)),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Your details will be removed. Reactivate your account at any time.",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xffA1A1A1)),
-                    ),
-                  ],
-                ),
-                value: 1,
-                groupValue: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    selectedValue = value!;
-                  });
-                },
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
-              RadioListTile(
-                contentPadding: EdgeInsets.zero,
-                activeColor: AppTheme.primaryColor,
-                title: const Text(
-                  "Deactivate your account",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: AppTheme.headlineColor),
-                ),
-                subtitle: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 5),
-                    Text(
-                      "This is permanent",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff767676)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Radio<int>(
+                    activeColor: AppTheme.primaryColor,
+                    value: 1,
+                    groupValue: selectedOption,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOption = value!;
+                      });
+                    },
+                  ),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 12),
+                        Text(
+                          "Deactivate your account",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: AppTheme.headlineColor),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "This can be temporary",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Color(0xff767676)),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Your details will be removed. Reactivate your account at any time.",
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xffA1A1A1)),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      "The account will no longer will be available and all data will be permanently removed.",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xffA1A1A1)),
-                    ),
-                  ],
-                ),
-                value: 2,
-                groupValue: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    selectedValue = value!;
-                  });
-                },
+                  ),
+                ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

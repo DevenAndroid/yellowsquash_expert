@@ -62,14 +62,14 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         padding: const EdgeInsets.only(right: 18),
                         child: Text(
                           'Education Details',
-                          style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w400, color: selectDetails == "Education Details" ? AppTheme.backgroundcolor : AppTheme.blackcolor),
+                          style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w400, color: selectDetails == "Education Details" ? AppTheme.backgroundcolor : AppTheme.blackcolor),
                         ),
                       ),
                     ),
                   ),
                 ),
                 Positioned(
-                  right: 150,
+                  right: 165,
                   top: 0,
                   bottom: 0,
                   left: 0,

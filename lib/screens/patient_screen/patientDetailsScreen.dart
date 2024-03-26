@@ -30,12 +30,14 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -56,7 +58,7 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                           borderRadius: BorderRadius.circular(4)),
                       child: TextFormField(
                         decoration: InputDecoration(
-                          hintText:'Search Here',
+                          hintText: 'Search Here',
                           prefixIcon: IconButton(
                             icon: const Icon(
                               Icons.search,
@@ -65,11 +67,12 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                             onPressed: () {},
                           ),
                         ),
-
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10,),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   Container(
                     height: 40,
                     width: 100,
@@ -85,13 +88,22 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                           blurRadius: 5,
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(4),),
-                    child: const Center(child: Text('Filters',style: TextStyle(color: Colors.white),)),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const Center(
+                        child: Text(
+                      'Filters',
+                      style: TextStyle(color: Colors.white),
+                    )),
                   ),
-                  const SizedBox(width: 10,),
+                  const SizedBox(
+                    width: 10,
+                  ),
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
                 children: [
                   const CircleAvatar(
@@ -101,30 +113,74 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                       "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
                     ),
                   ),
-                  const SizedBox(width: 10,),
+                  const SizedBox(
+                    width: 10,
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Manvinder Kaur',
-                        style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
+                        style:
+                            GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500, color: AppTheme.blackcolor),
                       ),
                       Text(
                         'Diabetes & Metabolic Reset Program',
-                        style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                        style:
+                            GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
                       ),
                       Text(
                         'Batch 2',
-                        style: GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
+                        style:
+                            GoogleFonts.poppins(fontSize: 10, fontWeight: FontWeight.w400, color: AppTheme.grayColor),
                       ),
                     ],
                   ),
                   const Spacer(),
-                  const Icon(Icons.more_horiz,color: Colors.grey,)
+                  PopupMenuButton<int>(
+                      surfaceTintColor: Colors.white,
+                      icon: const Icon(
+                        Icons.more_vert,
+                        color: Colors.black,
+                      ),
+                      color: Colors.white,
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            value: 1,
+                            onTap: () {},
+                            child: const Text("Levels"),
+                          ),
+                          PopupMenuItem(
+                            value: 2,
+                            onTap: () {
+                              Get.to(const PatientReportScreen());
+                            },
+                            child: const Text("Reports"),
+                          ),
+                          PopupMenuItem(
+                            value: 3,
+                            onTap: () {},
+                            child: const Text("Tasks"),
+                          ),
+                          PopupMenuItem(
+                            value: 3,
+                            onTap: () {},
+                            child: const Text("Symptoms"),
+                          ),
+                          PopupMenuItem(
+                            value: 3,
+                            onTap: () {},
+                            child: const Text("Intake Form"),
+                          ),
+                        ];
+                      })
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 'My Programs',
                 style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
@@ -136,11 +192,12 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        const SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         SizedBox(
                             height: 160,
                             child: Container(
-
                               height: 300,
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -167,7 +224,7 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                                 topLeft: Radius.circular(6), bottomLeft: Radius.circular(6)),
                                             child: CachedNetworkImage(
                                               imageUrl:
-                                              "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                                                  "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
                                               fit: BoxFit.cover,
                                               errorWidget: (_, __, ___) => const SizedBox(),
                                               placeholder: (_, __) => Image.asset(
@@ -205,15 +262,15 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        const SizedBox(height: 10,),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
                                         Text(
                                           "Kumbhak Therapy for Thyroid Reversal",
                                           style: GoogleFonts.poppins(
                                               color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                         ),
                                         const Spacer(),
-
-
                                       ],
                                     ),
                                   ),
@@ -221,16 +278,22 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                 ],
                               ),
                             )),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                       ],
                     );
                   }),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Text(
                 'My Workshops',
                 style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400, color: AppTheme.blackcolor),
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               ListView.builder(
                   itemCount: 1,
                   shrinkWrap: true,
@@ -238,11 +301,12 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        const SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         SizedBox(
                             height: 160,
                             child: Container(
-
                               height: 300,
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -269,7 +333,7 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                                 topLeft: Radius.circular(6), bottomLeft: Radius.circular(6)),
                                             child: CachedNetworkImage(
                                               imageUrl:
-                                              "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
+                                                  "https://media.istockphoto.com/id/515067687/photo/fagaras-mountains-romania-transylvania-region.jpg?s=2048x2048&w=is&k=20&c=8wJ56nL1trH7XM4_C86IWDsoQrzuj9ZyjP6Oe7SA6GA=",
                                               fit: BoxFit.cover,
                                               errorWidget: (_, __, ___) => const SizedBox(),
                                               placeholder: (_, __) => Image.asset(
@@ -307,15 +371,15 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        const SizedBox(height: 10,),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
                                         Text(
                                           "Kumbhak Therapy for Thyroid Reversal",
                                           style: GoogleFonts.poppins(
                                               color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
                                         ),
                                         const Spacer(),
-
-
                                       ],
                                     ),
                                   ),
@@ -323,7 +387,9 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                                 ],
                               ),
                             )),
-                        const SizedBox(height: 10,),
+                        const SizedBox(
+                          height: 10,
+                        ),
                       ],
                     );
                   }),

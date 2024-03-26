@@ -121,27 +121,29 @@ class _ProgrammeScreenState extends State<ProgrammeScreen> {
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
                                             const SizedBox(height: 10,),
                                             Text(
                                               "Functional Medicine Program for Autism & Developmental Disorders",
                                               style: GoogleFonts.poppins(
-                                                  color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 16),
+                                                  color: AppTheme.blackcolor, fontWeight: FontWeight.w500, fontSize: 14),
                                             ),
-                                            const SizedBox(height: 10,),
-                                            Text(
-                                              "DRAFT",
-                                              style: GoogleFonts.poppins(
-                                                  color: const Color(0xff444444), fontWeight: FontWeight.w500, fontSize: 12),
+                                           Spacer(),
+                                            Align(
+                                              alignment: Alignment.bottomLeft,
+                                              child: Text(
+                                                "DRAFT",
+                                                style: GoogleFonts.poppins(
+                                                    color: const Color(0xff444444), fontWeight: FontWeight.w500, fontSize: 12),
+                                              ),
                                             ),
-                                            const SizedBox(height: 10,),
 
+                                            const SizedBox(height: 5),
 
                                           ],
                                         ),
                                       ),
-                                      const SizedBox(width: 10),
                                     ],
                                   ),
                                 )),
